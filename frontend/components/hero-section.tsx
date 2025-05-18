@@ -6,7 +6,15 @@ export default function HeroSection() {
   return (
     <section className="relative h-screen flex items-center justify-center pt-16">
       <div className="absolute inset-0 bg-cover bg-center">
-        <Image src={landingPage} alt="landing page" className="w-full h-full object-cover" />
+        <Image 
+          src={landingPage} 
+          alt="landing page"
+          className="w-full h-full object-cover"
+          priority
+          quality={80}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j..."
+        />
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
