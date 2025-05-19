@@ -1,6 +1,9 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import landingPage from "@/public/images/landing-page-bg.jpg"
 import Image from "next/image"
+import { GlowEffect } from "@/components/ui/glow-effect"
 
 export default function HeroSection() {
   return (
@@ -20,15 +23,25 @@ export default function HeroSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-          Curate Your Campus Life – Explore, Share, and Earn
+          Curate Your Campus Life – Explore, Share, and Earn   
         </h1>
+        
         <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
           Discover hidden gems, travel tips, and student-rated hangouts near Shiv Nadar University.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white rounded-xl px-8 py-6 text-lg cursor-pointer">
-            Start Exploring
-          </Button>
+          <div className="relative">
+            <GlowEffect
+              colors={['#FF5733', '#33FF57', '#3357FF', '#F1C40F']}
+              mode="colorShift"
+              blur="soft"
+              duration={3}
+              scale={0.9}
+            />
+            <Button size="lg" className="relative bg-red-500 hover:bg-red-600 text-white rounded-xl px-8 py-6 text-lg cursor-pointer">
+              Start Exploring
+            </Button>
+          </div>
           <Button
             size="lg"
             variant="outline"

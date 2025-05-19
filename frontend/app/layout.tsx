@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "lokL - Your Campus Life Curator",
-  description: "Discover, share, and earn with student experiences around Shiv Nadar University",
+  description: "Discover, share, and earn with student experiences around SNU",
 };
 
 export default function RootLayout({

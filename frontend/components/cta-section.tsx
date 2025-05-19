@@ -1,5 +1,6 @@
-import { Button } from "@/components/ui/button"
+'use client'
 
+import { Button } from "@/components/ui/moving-border"
 export default function CtaSection() {
   return (
     <section className="py-20 bg-gradient-to-b from-white to-red-50">
@@ -8,9 +9,10 @@ export default function CtaSection() {
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
           Join our community of Shiv Nadar University students sharing their favorite spots and experiences.
         </p>
-        <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white rounded-xl px-8 py-6 text-lg cursor-pointer">
-          Contribute Now
+        <Button size="lg" borderRadius="1.75rem" className="bg-red-500 hover:bg-red-600 text-white rounded-xl px-8 py-6 text-lg cursor-pointer border-neutral-200 dark:border-slate-800">
+          Contribute
         </Button>
+
       </div>
     </section>
   )
