@@ -11,6 +11,7 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
 
   const handleGoogleSignIn = async () => {
+
     setIsLoading(true)
     // Add your Google OAuth logic here
     setIsLoading(false)
