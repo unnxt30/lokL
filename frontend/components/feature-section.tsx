@@ -9,7 +9,7 @@ interface Feature {
   id: string;
   title: string;
   description: string;
-  icon: React.ReactElement;
+  icon: React.ReactElement<React.SVGProps<SVGSVGElement>>;
 }
 
 const Feature = ({
@@ -20,7 +20,7 @@ const Feature = ({
 }: {
   title: string;
   description: string;
-  icon: React.ReactElement;
+  icon: React.ReactElement<React.SVGProps<SVGSVGElement>>;
   index: number;
 }) => {
   return (
