@@ -2,8 +2,15 @@
 
 import { Button } from "@/components/ui/button"
 import landingPage from "@/public/images/landing-page-bg.jpg"
+import { EB_Garamond } from "next/font/google"
 import Image from "next/image"
-import { GlowEffect } from "@/components/ui/glow-effect"
+
+
+ const garamond = EB_Garamond({
+  subsets: ['latin'],
+  variable: '--font-garamond',
+  display: 'swap',
+})
 
 export default function HeroSection() {
   return (
@@ -12,32 +19,29 @@ export default function HeroSection() {
         <Image 
           src={landingPage} 
           alt="landing page"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover blur-[2px]"
           priority
           quality={80}
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j..."
         />
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/70" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-          Curate Your Campus Life – Explore, Share, and Earn   
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 className={`${garamond.variable} font-serif text-5xl md:text-7xl lg:text-9xl tracking-tight leading-tight text-white mb-6`}>
+          Escape
+          <br />
+          the Campus Bubble
         </h1>
         
-        <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-          Discover hidden gems, travel tips, and student-rated hangouts near Shiv Nadar University.
-        </p>
+        <h3 className="text-xl md:text-3xl text-white/90 mb-8 max-w-3xl mx-auto space-y-3">
+           <span className={`${garamond.variable} text-red-500  font-serif italic`}>lokL</span> helps college students discover cool, 
+           affordable places to eat, chill, and explore in and around NCR — all reviewed and recommended by students like you. Whether it&apos;s a 
+           hidden café or a weekend hangout, we help you go beyond just <span className={`${garamond.variable}text-red-500 font-serif italic`}>&ldquo;kuch bhi.&rdquo;</span>
+        </h3>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <div className="relative">
-            <GlowEffect
-              colors={['#FF5733', '#33FF57', '#3357FF', '#F1C40F']}
-              mode="colorShift"
-              blur="soft"
-              duration={3}
-              scale={0.9}
-            />
             <Button size="lg" className="relative bg-red-500 hover:bg-red-600 text-white rounded-xl px-8 py-6 text-lg cursor-pointer">
               Start Exploring
             </Button>

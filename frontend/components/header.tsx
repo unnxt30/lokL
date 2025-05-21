@@ -31,8 +31,9 @@ export default function Header() {
             <Link href="/explore" className="text-gray-700 hover:text-red-500 px-3 py-2 font-medium">
               Explore
             </Link>
-            <Link href="/login" className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
-              Login
+            <Link href="/about" className="text-gray-700 hover:text-red-500 px-3 py-2 font-medium">Our Story</Link>
+            <Link href="/signup" className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+              Signup
             </Link>
           </nav>
 

@@ -1,62 +1,80 @@
 'use client';
 
-import { MessageSquare, Map, Award, Search } from "lucide-react"
-import { useState, useRef, useEffect } from "react";
-import { motion, useAnimationControls } from "framer-motion"
-import FeatureCard from "./feature-card"
-import type { LucideIcon } from "lucide-react"
+import { Star, Calendar, MapPin, Users} from "lucide-react"
+import { motion } from "framer-motion"
+import { cn } from "@/lib/utils"
+import React from "react";
 
 interface Feature {
   id: string;
   title: string;
   description: string;
-  icon: LucideIcon;
-  position: number;
-  side: 'left' | 'right';
+  icon: React.ReactElement;
 }
+
+const Feature = ({
+  title,
+  description,
+  icon,
+  index,
+}: {
+  title: string;
+  description: string;
+  icon: React.ReactElement;
+  index: number;
+}) => {
+  return (
+    <div
+      className={cn(
+        "flex flex-col lg:border-r py-12 px-6 relative group/feature dark:border-neutral-800 cursor-pointer min-h-[300px] w-full",
+        (index === 0) && "lg:border-l dark:border-neutral-800"
+      )}
+    >
+      <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
+      <div className="mb-6 relative z-10 px-8 text-neutral-600 dark:text-neutral-400">
+        {React.isValidElement(icon) && React.cloneElement(icon, { className: "w-8 h-8" })}
+      </div>
+      <div className="text-xl font-bold mb-4 relative z-10 px-8 w-full h-16 flex items-center">
+        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-red-500 transition-all duration-200 origin-center" />
+        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 dark:text-neutral-100">
+          {title}
+        </span>
+      </div>
+      <p className="text-base text-neutral-600 dark:text-neutral-300 w-full relative z-10 px-8">
+        {description}
+      </p>
+    </div>
+  );
+};
 
 export default function FeatureSection() {
   // Features data
-  const initialFeatures: Feature[] = [
+  const features = [
     {
       id: 'feature-1',
-      title: "Student Tips & Reviews",
-      description: "Get authentic recommendations and insights from fellow students who've been there.",
-      icon: MessageSquare,
-      position: 0,
-      side: 'left'
+      title: "lokL Picks",
+      description: "Curated spots loved by students, not TripAdvisor tourist. Think vibey cafes, offbeat art gigs, and thrift hubs.",
+      icon: <Star className="w-6 h-6" />,
     },
     {
       id: 'feature-2',
-      title: "Travel Info + Routes",
-      description: "Find the best ways to get around Delhi and Noida with student-verified transportation tips.",
-      icon: Map,
-      position: 1,
-      side: 'right'
+      title: "No Plans? No Problem!",
+      description: "Scroll-proof plans for your weekend or evening break. We Bundle nearby spots into plans that won't waste your energy.",
+      icon: <Calendar className="w-6 h-6" />,
     },
     {
       id: 'feature-3',
-      title: "Earn Badges & Points",
-      description: "Contribute to the community and earn recognition for your helpful insights.",
-      icon: Award,
-      position: 2,
-      side: 'left'
+      title: "Cheap Thrills, Mapped Out",
+      description: "We dont just tell you where to go -- we show you how to get there, what it'll cost, and the smartest way to travel like a broke-but-brilliant student.",
+      icon: <MapPin className="w-6 h-6" />,
     },
     {
       id: 'feature-4',
-      title: "Search + Filters",
-      description: "Easily find exactly what you're looking for with powerful search and filtering options.",
-      icon: Search,
-      position: 3,
-      side: 'right'
+      title: "Rated by Roommates, Not Influencers",
+      description: "All reviews are from students who've been there, done that -- no #ads, no fluff, just honest chaos and chill.",
+      icon: <Users className="w-6 h-6" />,
     },
   ];
-
-  const [features] = useState<Feature[]>(initialFeatures);
-  const lineRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const cardSpacing = 130; // Fixed spacing between dots
-  const controls = useAnimationControls();
   
   // Animation variants
   const containerVariants = {
@@ -69,115 +87,35 @@ export default function FeatureSection() {
     }
   };
 
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12
-      }
-    }
-  };
-
-  // Calculate the line's dimensions after render
-  useEffect(() => {
-    controls.start("visible"); // Start the animation immediately
-    
-    // Wait for layout to be ready
-    const timeoutId = setTimeout(() => {
-      // Ensure animations are running
-      controls.start("visible");
-    }, 500);
-    
-    return () => clearTimeout(timeoutId);
-  }, [controls]);
-
-  // Function to get the y position for a card based on its position index
-  const getYPosition = (position: number) => {
-    return position * cardSpacing; // Fixed spacing between cards (pixels)
-  };
-
   return (
-    <section ref={sectionRef} className="py-20 bg-gradient-to-b from-red-50 to-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-gradient-to-b from-red-50 to-white overflow-hidden">
+      <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2 
           className="text-3xl md:text-4xl font-bold text-center mb-16 text-[#3c2a2a]"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Discover the Best of Campus Life
+          What&apos;s in it for you?
         </motion.h2>
 
-        <div className="relative" style={{ minHeight: '600px' }}>
-          {/* Dotted line */}
-          <div 
-            ref={lineRef}
-            className="absolute hidden md:block left-1/2 top-0 bottom-0 w-0.5 border-l border-dashed border-red-300 transform -translate-x-1/2 z-0" 
-            style={{ height: '550px', marginTop: '50px' }} 
-          />
-          
-          <motion.div 
-            className="relative h-full"
-            variants={containerVariants}
-            initial="hidden"
-            animate={controls}
-          >
-            {features.map((feature) => {
-              return (
-                <motion.div 
-                  key={feature.id}
-                  className={`absolute z-10 flex items-center w-full ${feature.side === 'left' ? 'justify-start' : 'justify-end'}`}
-                  variants={itemVariants}
-                  style={{ 
-                    top: getYPosition(feature.position),
-                    zIndex: 10
-                  }}
-                >
-                  {/* Card with content */}
-                  <motion.div 
-                    className={`md:w-1/2 relative ${feature.side === 'left' ? 'md:pr-8' : 'md:pl-8'}`}
-                    drag="y"
-                    dragConstraints={{
-                      top: -50,
-                      bottom: 50
-                    }}
-                    dragElastic={0.1}
-                    dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
-                    whileDrag={{ 
-                      scale: 1.05,
-                      boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)",
-                      zIndex: 50
-                    }}
-                  >
-                    <FeatureCard 
-                      title={feature.title} 
-                      description={feature.description} 
-                      icon={feature.icon} 
-                      isDraggable={true}
-                    />
-                    
-                    {/* Connector dot - fixed to the card */}
-                    <div 
-                      className={`absolute top-1/2 ${feature.side === 'left' ? 'right-0' : 'left-0'} transform translate-y-[-50%] 
-                                 ${feature.side === 'left' ? 'translate-x-[50%]' : 'translate-x-[-50%]'} 
-                                 w-5 h-5 rounded-full bg-red-100 border-2 border-red-300 z-30`}
-                    />
-                  </motion.div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-          
-          {/* Instruction text */}
-          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center text-sm text-gray-500 w-full">
-            <p className="italic">Try dragging the cards up and down!</p>
-          </div>
-        </div>
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 relative z-10"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {features.map((feature, index) => (
+            <Feature
+              key={feature.id}
+              title={feature.title}
+              description={feature.description}
+              icon={feature.icon}
+              index={index}
+            />
+          ))}
+        </motion.div>
       </div>
     </section>
-  )
+  );
 }

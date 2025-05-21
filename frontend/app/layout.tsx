@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -26,10 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-     <link rel="preload" as="image" href="/images/landing-page-bg.jpg" />
-   </head>
+        <link rel="preload" as="image" href="/images/landing-page-bg.jpg" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${plusJakarta.variable} antialiased`}
       >
         <Header />
         <main>

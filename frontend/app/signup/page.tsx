@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { GlowEffect } from "@/components/ui/glow-effect"
 import Image from "next/image"
 import landingPage from "@/public/images/landing-page-bg.jpg"
 import { FcGoogle } from "react-icons/fc"
@@ -41,22 +40,15 @@ export default function SignUpPage() {
                 Join the Adventure
               </h1>
               <p className="text-white/80 text-lg">
-                Be part of the community that discovers and shares the best of campus life
+                Be part of the community 
               </p>
             </div>
             
             <div className="space-y-6">
               <div className="relative">
-                <GlowEffect
-                  colors={['#FF5733', '#33FF57', '#3357FF', '#F1C40F']}
-                  mode="colorShift"
-                  blur="soft"
-                  duration={3}
-                  scale={0.9}
-                />
                 <Button
                   onClick={handleGoogleSignUp}
-                  className="w-full relative bg-white hover:bg-gray-100 text-gray-900 rounded-xl py-6 text-lg flex items-center justify-center gap-3"
+                  className="w-full relative bg-white hover:bg-gray-100 text-gray-900 rounded-xl py-6 text-lg flex items-center justify-center gap-3 cursor-pointer"
                   disabled={isLoading}
                 >
                   <FcGoogle />
