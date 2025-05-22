@@ -65,13 +65,13 @@ export default function FeatureSection() {
     {
       id: 'feature-3',
       title: "Cheap Thrills, Mapped Out",
-      description: "We dont just tell you where to go -- we show you how to get there, what it'll cost, and the smartest way to travel like a broke-but-brilliant student.",
+      description: "We dont just tell you where to go, we show you how to get there, what it'll cost, and the smartest way to travel like a broke-but-brilliant student.",
       icon: <MapPin className="w-6 h-6" />,
     },
     {
       id: 'feature-4',
       title: "Rated by Roommates, Not Influencers",
-      description: "All reviews are from students who've been there, done that -- no #ads, no fluff, just honest chaos and chill.",
+      description: "All reviews are from students who've been there, done that  no #ads, no fluff, just honest chaos and chill.",
       icon: <Users className="w-6 h-6" />,
     },
   ];
