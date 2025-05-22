@@ -88,7 +88,7 @@ export default function FeatureSection() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-red-50 to-white overflow-hidden">
+    <section className="py-20 bg-white overflow-hidden">
       <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2 
           className="text-3xl md:text-4xl font-bold text-center mb-16 text-[#3c2a2a]"
