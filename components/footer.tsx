@@ -11,9 +11,19 @@ import {
 } from "@/components/ui/tooltip"
 import lokL from "@/public/images/footer-logo.svg"
 
-export default function Footer() {
+interface FooterProps {
+  backgroundColor?: string;
+  borderColor?: string;
+  textColor?: string;
+}
+
+export default function Footer({ 
+  backgroundColor = "bg-[#3c2a2a]", 
+  borderColor = "border-gray-800",
+  textColor = "text-white"
+}: FooterProps = {}) {
   return (
-    <footer className="relative border-t bg-[#3c2a2a] text-white">
+    <footer className={`relative border-t ${backgroundColor} ${textColor}`}>
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="relative">
@@ -81,7 +91,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-gray-800 pt-8 text-center md:flex-row">
+        <div className={`mt-12 flex flex-col items-center justify-between gap-4 border-t ${borderColor} pt-8 text-center md:flex-row`}>
           <p className="text-sm text-gray-400">
             © {new Date().getFullYear()} lokL. All rights reserved.
           </p>
